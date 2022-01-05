@@ -40,7 +40,19 @@ contract Ballot {
     Gives a voter address the right to vote. This is called only by the Chairperson
     */
     function giveRightToVote(address voter) public {
-        
+        require(
+            msg.sender == chairperson,
+            "Only chairperson can call this."
+        );
+        // Check if voter hasn't already voted
+        require(
+            !voters[voter].voted,
+            "The voter has already casted their vote."
+        );
+        // Check voter has not been given the right to vote before
+        require(voters[voter].weight == 0);
+        // Voting rights assigned. Can now cast 1 vote
+        voters[voter].weight = 1;
     }
 
     /*
