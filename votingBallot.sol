@@ -3,7 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 contract Ballot {
-   
+
     struct Voter {
         uint weight; // weight is accumulated by delegation
         bool voted;  // if true, that person already voted
@@ -12,7 +12,7 @@ contract Ballot {
     }
 
     struct Proposal {
-        bytes32 name;   
+        string name;   
         uint voteCount; // number of accumulated votes
     }
 
@@ -23,12 +23,13 @@ contract Ballot {
     Proposal[] public proposals;
 
     // Constructor run when Contract is first initialized
-    constructor(bytes32[3] memory proposalNames=["Conservative Party","Labour Party","Robert"]) {
+    constructor() public {
+        string[3] memory proposalNames = ["Conservative Party","Labour Party","Robert"];
         chairperson = msg.sender;
         voters[chairperson].weight = 1;
 
         // Adding all the proposal names into the proposals array
-        for (uint i = 0; i  proposalNames.length; i++) {
+        for (uint i = 0; i < proposalNames.length; i++) {
             proposals.push(Proposal({
                 name: proposalNames[i],
                 voteCount: 0
@@ -116,7 +117,7 @@ contract Ballot {
 
 
     function winnerName() public view
-        returns (bytes32 winnerName_)
+        returns (string memory winnerName_)
     {
         winnerName_ = proposals[winningProposal()].name;
     }
