@@ -36,4 +36,35 @@ contract Ballot {
         }
     }
 
+    /**
+    Gives a voter address the right to vote. This is called only by the Chairperson
+    */
+    function giveRightToVote(address voter) public {
+        
+    }
+
+    /*
+    Used to delegate a vote
+    */
+    function delegate(address to) public {
+    }
+
+    /*
+    Used to cast vote ( including votes delegated to person )
+    */
+    function vote(uint proposal) public {
+    }
+
+    /*
+    Calculating Votes
+     */
+    function winningProposal() public view
+        
+    }
+
+
+    function winnerName() public view
+            
+    }
+
 }
