@@ -36,6 +36,9 @@ contract Ballot {
             }));
         }
     }
+    /**
+    commit which is not to be pushed to remote
+     */
 
     /**
     Gives a voter address the right to vote. This is called only by the Chairperson
